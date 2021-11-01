@@ -12,7 +12,7 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._1
         public override string DisplayName => "Longer Range";
         public override string Description => "Increased range and pierce.";
         public override int Cost => 130;
-        public override int Path => TOP;
+        public override int Path => BOTTOM;
         public override int Tier => 1;
         public override string Icon => "Icon";
         public override string Portrait => "Portrait";

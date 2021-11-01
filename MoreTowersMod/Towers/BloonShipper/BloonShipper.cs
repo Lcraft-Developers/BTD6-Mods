@@ -23,14 +23,18 @@ namespace MoreTowersMod
             public override string Name => "Bloonchipper";
             public override int Cost => 420;
             public override string TowerSet => "Military";
-            public override int TopPathUpgrades => 4;
-            public override int MiddlePathUpgrades => 4;
-            public override int BottomPathUpgrades => 0;
+            public override int TopPathUpgrades => 2;
+            public override int MiddlePathUpgrades => 5;
+            public override int BottomPathUpgrades => 1;
             public override string DisplayName => "Bloonchipper";
             public override string Description => "Rapidly sucks up and shreds bloons, spitting what's left out the back.";
             public override string Get2DTexture(int[] tiers)
             {
-                return "Portrait";
+                if(tiers[1] >= 4)
+                {
+                    return "FireIcon";
+                }
+                return "Icon";
             }
             public override bool Use2DModel => true;
             public override void ModifyBaseTowerModel(TowerModel towerModel)
@@ -42,7 +46,7 @@ namespace MoreTowersMod
                 towerModel.AddBehavior(Game.instance.model.GetTowerFromId("DartMonkey").GetBehavior<CreateSoundOnUpgradeModel>().Duplicate());
                 towerModel.RemoveBehavior<CreateEffectOnUpgradeModel>();
                 towerModel.AddBehavior(Game.instance.model.GetTowerFromId("DartMonkey").GetBehavior<CreateEffectOnUpgradeModel>().Duplicate());
-                var squeeze = towerModel.GetAbility(1).GetBehavior<ActivateAttackModel>().attacks[0].Duplicate<AttackModel>();
+                var squeeze = towerModel.GetAbility(1).GetBehavior<ActivateAttackModel>().attacks[0].Duplicate();
                 squeeze.weapons[0].Rate = 3;
                 squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().nonMoabsAnimId = 4;
                 squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().moabAnimId = 4;
@@ -52,8 +56,7 @@ namespace MoreTowersMod
                 squeeze.GetBehavior<TargetStrongModel>().isSelectable = true;
                 squeeze.AddBehavior<TargetFirstModel>(new TargetFirstModel("TargetFirstModel_", true, false));
                 squeeze.weapons[0].projectile.pierce = 1;
-                squeeze.weapons[0].projectile.maxPierce = 3;
-                squeeze.weapons[0].projectile.CapPierce(5);
+                squeeze.weapons[0].projectile.maxPierce = 7;
                 towerModel.RemoveBehavior<AttackModel>();
                 towerModel.AddBehavior<AttackModel>(squeeze);
                 towerModel.RemoveBehavior<AbilityModel>();

@@ -65,11 +65,11 @@
     <Compile Include="Towers\BloonShipper\Upgrades\Middle\1\FasterSucc.cs" />
     <Compile Include="Towers\BloonShipper\Upgrades\Middle\2\SimpleShredder.cs" />
     <Compile Include="Towers\BloonShipper\Upgrades\Middle\3\GoodShredder.cs" />
-    <Compile Include="Towers\BloonShipper\Upgrades\Middle\4\QuadSucc.cs" />
-    <Compile Include="Towers\BloonShipper\Upgrades\Top\1\LongerSucc.cs" />
+    <Compile Include="Towers\BloonShipper\Upgrades\Middle\5\QuadSucc.cs" />
+    <Compile Include="Towers\BloonShipper\Upgrades\Bottom\1\LongerSucc.cs" />
+    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Top\1\BaloonsDetect.cs" />
     <Compile Include="Towers\BloonShipper\Upgrades\Top\2\MOABSucc.cs" />
-    <Compile Include="Towers\BloonShipper\Upgrades\Top\3\ZOMGSucc.cs" />
-    <Compile Include="Towers\BloonShipper\Upgrades\Top\4\FireSucc.cs" />
+    <Compile Include="Towers\BloonShipper\Upgrades\Middle\4\FireSucc.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Towers\BloonShipper\Portrait.png" />
@@ -79,27 +79,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Towers\BloonShipper\Upgrades\Bottom\1\" />
     <Folder Include="Towers\BloonShipper\Upgrades\Bottom\2\" />
     <Folder Include="Towers\BloonShipper\Upgrades\Bottom\3\" />
     <Folder Include="Towers\BloonShipper\Upgrades\Bottom\4\" />
+    <Folder Include="Towers\BloonShipper\Upgrades\Top\3\" />
+    <Folder Include="Towers\BloonShipper\Upgrades\Top\4\" />
+    <Folder Include="Towers\Gamer\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Middle\1\Portrait.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Top\4\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Top\4\Portrait.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Top\3\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Top\3\Portrait.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Top\2\Icon.png" />
@@ -108,16 +98,16 @@
     <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Top\2\Portrait.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Top\1\Icon.png" />
+    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Bottom\1\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Top\1\Portrait.png" />
+    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Bottom\1\Portrait.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Middle\4\Icon.png" />
+    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Middle\5\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Middle\4\Portrait.png" />
+    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Middle\5\Portrait.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Middle\3\Icon.png" />
@@ -130,6 +120,14 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Middle\2\Portrait.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Middle\4\FireIcon.png" />
+    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Middle\4\FirePortrait.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Towers\BloonShipper\Upgrades\Top\1\Icon.png" />
+    <EmbeddedResource Include="Towers\BloonShipper\Upgrades\Top\1\Portrait.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

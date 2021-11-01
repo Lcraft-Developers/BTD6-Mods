@@ -20,7 +20,7 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Middle._2
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();
-            attackModel.weapons[0].projectile.pierce = 3f;
+            attackModel.weapons[0].projectile.pierce = 4f;
             attackModel.weapons[0].Rate = 0.5f;
             attackModel.weapons[0].projectile.GetBehavior<DelayBloonChildrenSpawningModel>().Lifespan *= 2f;
         }

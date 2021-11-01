@@ -19,7 +19,7 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Middle._1
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();
-            attackModel.weapons[0].projectile.pierce = 2f;
+            attackModel.weapons[0].projectile.pierce = 4f;
             attackModel.weapons[0].Rate = 1.5f;
         }
     }

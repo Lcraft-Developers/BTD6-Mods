@@ -12,7 +12,7 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Middle._3
     public class GoodShredder : ModUpgrade<BloonChipper>
     {
         public override string Name => "GoodShredder";
-        public override string DisplayName => "Shreeder sees everything";
+        public override string DisplayName => "Shreeder is fastes as a car";
         public override string Description => "Attacks all types of baloons.";
         public override int Cost => 1300;
         public override int Path => MIDDLE;
@@ -22,7 +22,7 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Middle._3
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();
-            attackModel.weapons[0].projectile.pierce = 5f;
+            attackModel.weapons[0].projectile.pierce = 6f;
             attackModel.weapons[0].Rate = 0.1f;
             attackModel.weapons[0].projectile.GetBehavior<DelayBloonChildrenSpawningModel>().Lifespan *= 4f;
             // TODO: All Baloons and MOAB Detection

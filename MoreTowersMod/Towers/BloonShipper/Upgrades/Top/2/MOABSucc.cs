@@ -16,8 +16,8 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._2
     {
         public override string Name => "MOABSucc";
         public override string DisplayName => "MOAB Killer";
-        public override string Description => "Can now destroy moabs. Ability doubles attack speed.";
-        public override int Cost => 9200;
+        public override string Description => "Can now destroy any type of moabs";
+        public override int Cost => 4200;
         public override int Path => TOP;
         public override int Tier => 2;
         public override string Icon => "Icon";
@@ -29,20 +29,20 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._2
             attackModel.AddWeapon(attackModel.weapons[0].Duplicate<WeaponModel>());
             attackModel.weapons[1].projectile.pierce = 7;
             attackModel.weapons[1].projectile.maxPierce = 13;
-            attackModel.weapons[1].projectile.CapPierce(999);
-            attackModel.range += 20;
-            towerModel.range += 20;
-            attackModel.weapons[0].projectile.radius += 30;
+            attackModel.weapons[1].projectile.CapPierce(99);
+            attackModel.range += 2;
+            towerModel.range += 2;
+            attackModel.weapons[0].projectile.radius += 2;
 
-            AbilityModel abilityModel = Game.instance.model.GetTowerFromId("PatFusty 20").GetAbility().Duplicate();
+            /*AbilityModel abilityModel = Game.instance.model.GetTowerFromId("PatFusty 20").GetAbility().Duplicate();
             abilityModel.icon = GetSpriteReference(mod, "Bloonchipper");
             ActivateTowerDamageSupportZoneModel a = abilityModel.GetBehavior<ActivateTowerDamageSupportZoneModel>();
             ActivateRateSupportZoneModel arszm = new ActivateRateSupportZoneModel(a.name, a.mutatorId, a.isUnique, 0.5f, 0.1f, 1, a.canEffectThisTower, a.lifespan, null, a.buffLocsName, a.buffIconName, a.filters, false);
             abilityModel.AddBehavior<ActivateRateSupportZoneModel>(arszm);
             abilityModel.RemoveBehavior<ActivateTowerDamageSupportZoneModel>();
-            towerModel.AddBehavior(abilityModel);
+            towerModel.AddBehavior(abilityModel);*/
 
-            // TODO: Camo and MOAB Detection
+            // TODO: MOAB Detection
             attackModel.weapons[0].projectile.GetBehavior<DelayBloonChildrenSpawningModel>().Lifespan *= 3f;
         }
     }
