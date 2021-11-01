@@ -30,7 +30,7 @@ namespace MoreTowersMod
             public override string Description => "Rapidly sucks up and shreds bloons, spitting what's left out the back.";
             public override string Get2DTexture(int[] tiers)
             {
-                return "BloonchipperDisplay";
+                return "Portrait";
             }
             public override bool Use2DModel => true;
             public override void ModifyBaseTowerModel(TowerModel towerModel)
@@ -43,24 +43,12 @@ namespace MoreTowersMod
                 towerModel.RemoveBehavior<CreateEffectOnUpgradeModel>();
                 towerModel.AddBehavior(Game.instance.model.GetTowerFromId("DartMonkey").GetBehavior<CreateEffectOnUpgradeModel>().Duplicate());
                 var squeeze = towerModel.GetAbility(1).GetBehavior<ActivateAttackModel>().attacks[0].Duplicate<AttackModel>();
-                squeeze.weapons[0].Rate = 5;
+                squeeze.weapons[0].Rate = 3;
                 squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().nonMoabsAnimId = 4;
                 squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().moabAnimId = 4;
                 squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().bfbAnimId = 4;
                 squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().zomgAnimId = 4;
                 squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().ddtAnimId = 4;
-                squeeze.weapons[0].projectile.filters = new Il2CppReferenceArray<FilterModel>(new FilterModel[] {
-          new FilterOutTagModel("FilterOutTagModel_ProjectileSqueeze", "Moabs", new Il2CppStringArray(0)),
-            new FilterInvisibleModel("FilterInvisibleModel_", true, false)
-        });
-                squeeze.weapons[0].projectile.GetBehavior<ProjectileFilterModel>().filters = new Il2CppReferenceArray<FilterModel>(new FilterModel[] {
-          new FilterOutTagModel("FilterOutTagModel_ProjectileSqueeze", "Moabs", new Il2CppStringArray(0)),
-            new FilterInvisibleModel("FilterInvisibleModel_", true, false)
-        });
-                squeeze.GetBehavior<AttackFilterModel>().filters = new Il2CppReferenceArray<FilterModel>(new FilterModel[] {
-          new FilterOutTagModel("FilterOutTagModel_ProjectileSqueeze", "Moabs", new Il2CppStringArray(0)),
-            new FilterInvisibleModel("FilterInvisibleModel_", true, false),
-        });
                 squeeze.GetBehavior<TargetStrongModel>().isSelectable = true;
                 squeeze.AddBehavior<TargetFirstModel>(new TargetFirstModel("TargetFirstModel_", true, false));
                 squeeze.weapons[0].projectile.pierce = 1;
@@ -72,9 +60,9 @@ namespace MoreTowersMod
                 towerModel.RemoveBehavior<AbilityModel>();
                 towerModel.GetAttackModel().weapons[0].projectile.RemoveBehavior<CreateSoundOnDelayedCollisionModel>();
             }
-            public override string Icon => "Bloonchipper";
-            public override string Portrait => "Bloonchipper";
-            public override float PixelsPerUnit => 4.6f;
+            public override string Icon => "Icon";
+            public override string Portrait => "Portrait";
+            public override float PixelsPerUnit => 8f;
         }
     }
 }

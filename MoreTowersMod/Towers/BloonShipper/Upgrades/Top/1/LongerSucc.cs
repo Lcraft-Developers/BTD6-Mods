@@ -14,14 +14,14 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._1
         public override int Cost => 130;
         public override int Path => TOP;
         public override int Tier => 1;
-        public override string Icon => "Bloonchipper";
+        public override string Icon => "Icon";
+        public override string Portrait => "Portrait";
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();
-            attackModel.weapons[0].projectile.pierce = 1;
-            attackModel.range += 15;
-            towerModel.range += 15;
-            attackModel.weapons[0].projectile.radius += 15;
+            attackModel.range += 20;
+            towerModel.range += 20;
+            attackModel.weapons[0].projectile.radius += 20;
         }
     }
 }

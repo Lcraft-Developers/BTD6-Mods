@@ -15,7 +15,8 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._4
         public override int Cost => 17000;
         public override int Path => TOP;
         public override int Tier => 4;
-        public override string Icon => "Bloonchipper";
+        public override string Icon => "Icon";
+        public override string Portrait => "Portrait";
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();

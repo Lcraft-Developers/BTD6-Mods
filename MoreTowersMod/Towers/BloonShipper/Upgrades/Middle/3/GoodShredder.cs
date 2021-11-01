@@ -17,12 +17,13 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Middle._3
         public override int Cost => 1300;
         public override int Path => MIDDLE;
         public override int Tier => 3;
-        public override string Icon => "Bloonchipper";
+        public override string Icon => "Icon";
+        public override string Portrait => "Portrait";
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();
-            attackModel.weapons[0].projectile.pierce = 4;
-            attackModel.weapons[0].Rate = 0.75f;
+            attackModel.weapons[0].projectile.pierce = 5f;
+            attackModel.weapons[0].Rate = 0.1f;
             attackModel.weapons[0].projectile.GetBehavior<DelayBloonChildrenSpawningModel>().Lifespan *= 4f;
             // TODO: All Baloons and MOAB Detection
         }

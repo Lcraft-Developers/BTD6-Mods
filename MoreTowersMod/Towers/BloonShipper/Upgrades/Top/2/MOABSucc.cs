@@ -20,7 +20,8 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._2
         public override int Cost => 9200;
         public override int Path => TOP;
         public override int Tier => 2;
-        public override string Icon => "Bloonchipper";
+        public override string Icon => "Icon";
+        public override string Portrait => "Portrait";
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();
@@ -28,7 +29,10 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._2
             attackModel.AddWeapon(attackModel.weapons[0].Duplicate<WeaponModel>());
             attackModel.weapons[1].projectile.pierce = 7;
             attackModel.weapons[1].projectile.maxPierce = 13;
-            attackModel.weapons[1].projectile.CapPierce(999999);
+            attackModel.weapons[1].projectile.CapPierce(999);
+            attackModel.range += 20;
+            towerModel.range += 20;
+            attackModel.weapons[0].projectile.radius += 30;
 
             AbilityModel abilityModel = Game.instance.model.GetTowerFromId("PatFusty 20").GetAbility().Duplicate();
             abilityModel.icon = GetSpriteReference(mod, "Bloonchipper");
