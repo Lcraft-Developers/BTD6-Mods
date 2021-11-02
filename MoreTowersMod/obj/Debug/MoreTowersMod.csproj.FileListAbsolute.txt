@@ -43,3 +43,4 @@ C:\Users\LPD\Desktop\BTD 6 Mod\proyekts\MoreTowersMod\obj\Debug\MoreTowersMod.cs
 C:\Users\LPD\Desktop\BTD 6 Mod\proyekts\MoreTowersMod\obj\Debug\MoreTowersMod.csproj.CopyComplete
 C:\Users\LPD\Desktop\BTD 6 Mod\proyekts\MoreTowersMod\obj\Debug\MoreTowersMod.dll
 C:\Users\LPD\Desktop\BTD 6 Mod\proyekts\MoreTowersMod\obj\Debug\MoreTowersMod.pdb
+C:\Users\LPD\Desktop\BTD 6 Mod\proyekts\MoreTowersMod\obj\Debug\MoreTowersMod.csproj.AssemblyReference.cache

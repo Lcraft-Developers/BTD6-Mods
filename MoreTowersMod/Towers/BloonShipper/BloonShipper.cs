@@ -47,7 +47,6 @@ namespace MoreTowersMod
             towerModel.RemoveBehavior<CreateSoundOnBloonEnterTrackModel>();
             towerModel.RemoveBehavior<CreateSoundOnBloonLeakModel>();
             towerModel.RemoveBehavior<CreateSoundOnSelectedModel>();
-            towerModel.RemoveBehavior<CreateEffectOnUpgradeModel>();
             towerModel.GetAttackModel().weapons[0].projectile.RemoveBehavior<CreateSoundOnDelayedCollisionModel>();
 
             // Add Baloons Blop Sound
@@ -55,6 +54,24 @@ namespace MoreTowersMod
             towerModel.AddBehavior(Game.instance.model.GetTowerFromId("DartMonkey").GetBehavior<CreateEffectOnUpgradeModel>().Duplicate());
 
             var squeeze = towerModel.GetAbility(1).GetBehavior<ActivateAttackModel>().attacks[0].Duplicate();
+
+            // Combat
+            squeeze.weapons[0].Rate = 3;
+            squeeze.weapons[0].projectile.pierce = 1;
+            squeeze.weapons[0].projectile.maxPierce = 3;
+
+            squeeze.weapons[0].projectile.filters = new Il2CppReferenceArray<FilterModel>(new FilterModel[] {
+                new FilterOutTagModel("FilterOutTagModel_ProjectileSqueeze","Moabs",new Il2CppStringArray(0)),
+                new FilterInvisibleModel("FilterInvisibleModel_",true,false)
+            });
+            squeeze.weapons[0].projectile.GetBehavior<ProjectileFilterModel>().filters = new Il2CppReferenceArray<FilterModel>(new FilterModel[] {
+                new FilterOutTagModel("FilterOutTagModel_ProjectileSqueeze","Moabs",new Il2CppStringArray(0)),
+                new FilterInvisibleModel("FilterInvisibleModel_",true,false)
+            });
+            squeeze.GetBehavior<AttackFilterModel>().filters = new Il2CppReferenceArray<FilterModel>(new FilterModel[] {
+                new FilterOutTagModel("FilterOutTagModel_ProjectileSqueeze","Moabs",new Il2CppStringArray(0)),
+                new FilterInvisibleModel("FilterInvisibleModel_",true,false),
+            });
 
             // Remove Baloons Animation
             squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().nonMoabsAnimId = 4;
@@ -66,11 +83,6 @@ namespace MoreTowersMod
             // Target System
             squeeze.GetBehavior<TargetStrongModel>().isSelectable = true;
             squeeze.AddBehavior<TargetFirstModel>(new TargetFirstModel("TargetFirstModel", true, false));
-
-            // Combat
-            squeeze.weapons[0].Rate = 3;
-            squeeze.weapons[0].projectile.pierce = 1;
-            squeeze.weapons[0].projectile.maxPierce = 3;
 
             // Register Model
             towerModel.AddBehavior<AttackModel>(squeeze);
