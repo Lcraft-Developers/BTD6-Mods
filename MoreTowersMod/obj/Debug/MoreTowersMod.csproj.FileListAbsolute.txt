@@ -45,3 +45,4 @@ C:\Users\LPD\Desktop\BTD 6 Mod\proyekts\MoreTowersMod\obj\Debug\MoreTowersMod.dl
 C:\Users\LPD\Desktop\BTD 6 Mod\proyekts\MoreTowersMod\obj\Debug\MoreTowersMod.pdb
 C:\Users\LPD\Desktop\BTD 6 Mod\proyekts\MoreTowersMod\bin\Debug\Towers\BloonShipper\Upgrades\Middle\1\Icon.png
 C:\Users\LPD\Desktop\BTD 6 Mod\proyekts\MoreTowersMod\bin\Debug\Towers\BloonShipper\Upgrades\Middle\1\Portrait.png
+C:\Users\LPD\Desktop\BTD 6 Mod\proyekts\MoreTowersMod\obj\Debug\MoreTowersMod.csproj.AssemblyReference.cache
