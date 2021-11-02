@@ -6,7 +6,7 @@ using static MoreTowersMod.BloonChipperTower;
 
 namespace MoreTowersMod.Upgrades.BloonShipper.Top._1
 {
-    public class LongerSucc : ModUpgrade<BloonChipper>
+    public class LongerSucc : ModUpgrade<BloonChipperTower>
     {
         public override string Name => "LongerSucc";
         public override string DisplayName => "Longer Range";
@@ -14,8 +14,8 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._1
         public override int Cost => 130;
         public override int Path => BOTTOM;
         public override int Tier => 1;
-        public override string Icon => "Icon";
-        public override string Portrait => "Portrait";
+        public override string Icon => "LongerSucc_Portrait_Bloonshipper";
+        public override string Portrait => "LongerSucc_Portrait_Bloonshipper";
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();

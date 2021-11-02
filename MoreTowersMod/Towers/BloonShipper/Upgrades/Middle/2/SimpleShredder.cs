@@ -7,7 +7,7 @@ using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 
 namespace MoreTowersMod.Upgrades.BloonShipper.Middle._2
 {
-    public class SimpleShredder : ModUpgrade<BloonChipper>
+    public class SimpleShredder : ModUpgrade<BloonChipperTower>
     {
         public override string Name => "SimpleShredder";
         public override string DisplayName => "Its shreds like a Shredder";
@@ -15,14 +15,14 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Middle._2
         public override int Cost => 950;
         public override int Path => MIDDLE;
         public override int Tier => 2;
-        public override string Icon => "Icon";
-        public override string Portrait => "Portrait";
+        public override string Icon => "SimpleShredder_Icon_Bloonshipper";
+        public override string Portrait => "SimpleShredder_Portrait_Bloonshipper";
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();
-            attackModel.weapons[0].projectile.pierce = 4f;
             attackModel.weapons[0].Rate = 0.5f;
-            attackModel.weapons[0].projectile.GetBehavior<DelayBloonChildrenSpawningModel>().Lifespan *= 2f;
+            attackModel.weapons[0].projectile.pierce = 3;
+            attackModel.weapons[0].projectile.maxPierce = 7;
         }
     }
 }

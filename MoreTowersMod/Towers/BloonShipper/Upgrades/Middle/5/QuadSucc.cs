@@ -2,12 +2,11 @@
 using Assets.Scripts.Models.Towers.Behaviors.Attack;
 using BTD_Mod_Helper.Extensions;
 using BTD_Mod_Helper.Api.Towers;
-using static MoreTowersMod.BloonChipperTower;
 using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 
 namespace MoreTowersMod.Upgrades.BloonShipper.Middle._4
 {
-    public class QuadSucc : ModUpgrade<BloonChipper>
+    public class QuadSucc : ModUpgrade<BloonChipperTower>
     {
         public override string Name => "QuadSucc";
         public override string DisplayName => "Quad Killer";
@@ -15,15 +14,14 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Middle._4
         public override int Cost => 136000;
         public override int Path => MIDDLE;
         public override int Tier => 5;
-        public override string Icon => "Icon";
-        public override string Portrait => "Portrait";
+        public override string Icon => "QuadSucc_Icon_Bloonshipper";
+        public override string Portrait => "QuadSucc_Portrait_Bloonshipper";
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();
+            attackModel.weapons[0].Rate = 0.005f;
+            attackModel.weapons[0].projectile.pierce = 12;
             attackModel.weapons[0].projectile.maxPierce = 17;
-            attackModel.weapons[0].projectile.pierce = 13;
-            attackModel.weapons[0].Rate *= 0.04f;
-            attackModel.weapons[0].projectile.GetBehavior<DelayBloonChildrenSpawningModel>().Lifespan *= 1f;
         }
     }
 }

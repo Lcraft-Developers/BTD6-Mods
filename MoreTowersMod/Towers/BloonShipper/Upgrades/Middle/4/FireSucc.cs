@@ -7,7 +7,7 @@ using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
 
 namespace MoreTowersMod.Upgrades.BloonShipper.Top._4
 {
-    public class FireSucc : ModUpgrade<BloonChipper>
+    public class FireSucc : ModUpgrade<BloonChipperTower>
     {
         public override string Name => "FireKiller";
         public override string DisplayName => "Fire Killer";
@@ -15,15 +15,14 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._4
         public override int Cost => 17000;
         public override int Path => MIDDLE;
         public override int Tier => 4;
-        public override string Icon => "FireIcon";
-        public override string Portrait => "FirePortrait";
+        public override string Icon => "FireSucc_Icon_Bloonshipper";
+        public override string Portrait => "FireSucc_Portrait_Bloonshipper";
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();
-            attackModel.weapons[0].Rate *= 0.3f;
+            attackModel.weapons[0].Rate = 0.1f;
             attackModel.weapons[0].projectile.pierce = 9;
-            attackModel.weapons[0].projectile.maxPierce = 13;
-            attackModel.weapons[0].projectile.GetBehavior<DelayBloonChildrenSpawningModel>().Lifespan *= 1f;
+            attackModel.weapons[0].projectile.maxPierce = 11;
         }
     }
 }

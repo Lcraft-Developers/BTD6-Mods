@@ -9,7 +9,7 @@ using Assets.Scripts.Models.Towers.Filters;
 
 namespace MoreTowersMod.Upgrades.BloonShipper.Middle._3
 {
-    public class GoodShredder : ModUpgrade<BloonChipper>
+    public class GoodShredder : ModUpgrade<BloonChipperTower>
     {
         public override string Name => "GoodShredder";
         public override string DisplayName => "Shreeder is fastes as a car";
@@ -17,15 +17,14 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Middle._3
         public override int Cost => 1300;
         public override int Path => MIDDLE;
         public override int Tier => 3;
-        public override string Icon => "Icon";
-        public override string Portrait => "Portrait";
+        public override string Icon => "GoodShredder_Icon_Bloonshipper";
+        public override string Portrait => "GoodShredder_Portrait_Bloonshipper";
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();
-            attackModel.weapons[0].projectile.pierce = 6f;
-            attackModel.weapons[0].Rate = 0.1f;
-            attackModel.weapons[0].projectile.GetBehavior<DelayBloonChildrenSpawningModel>().Lifespan *= 4f;
-            // TODO: All Baloons and MOAB Detection
+            attackModel.weapons[0].Rate = 0.2f;
+            attackModel.weapons[0].projectile.pierce = 5;
+            attackModel.weapons[0].projectile.maxPierce = 7;
         }
     }
 }

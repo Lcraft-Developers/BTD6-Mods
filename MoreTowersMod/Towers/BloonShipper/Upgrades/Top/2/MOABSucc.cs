@@ -12,7 +12,7 @@ using Assets.Scripts.Models.Towers.Behaviors;
 
 namespace MoreTowersMod.Upgrades.BloonShipper.Top._2
 {
-    public class MOABSucc : ModUpgrade<BloonChipper>
+    public class MOABSucc : ModUpgrade<BloonChipperTower>
     {
         public override string Name => "MOABSucc";
         public override string DisplayName => "MOAB Killer";
@@ -20,8 +20,8 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._2
         public override int Cost => 4200;
         public override int Path => TOP;
         public override int Tier => 2;
-        public override string Icon => "Icon";
-        public override string Portrait => "Portrait";
+        public override string Icon => "MOABSucc_Icon_Bloonshipper";
+        public override string Portrait => "MOABSucc_Portrait_Bloonshipper";
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();
