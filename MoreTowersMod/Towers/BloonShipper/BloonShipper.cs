@@ -12,6 +12,8 @@ using BTD_Mod_Helper.Extensions;
 using Assets.Scripts.Models.Towers.Weapons.Behaviors;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper;
+using BTD_Mod_Helper.Api.Display;
+using Assets.Scripts.Unity.Display;
 
 namespace MoreTowersMod
 {
@@ -86,9 +88,19 @@ namespace MoreTowersMod
 
             // Register Model
             towerModel.AddBehavior<AttackModel>(squeeze);
+            towerModel.ApplyDisplay<BloonShipperTowerDisplay>();
         }
         public override string Icon => "Icon_Bloonshipper";
         public override string Portrait => "Portrait_Bloonshipper";
         public override float PixelsPerUnit => 8f;
+    }
+
+    public class BloonShipperTowerDisplay : ModDisplay
+    {
+        public override string BaseDisplay => Generic2dDisplay;
+        public override void ModifyDisplayNode(UnityDisplayNode node)
+        {
+            Set2DTexture(node, Name);
+        }
     }
 }
