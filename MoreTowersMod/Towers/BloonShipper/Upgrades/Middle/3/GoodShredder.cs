@@ -14,7 +14,7 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Middle._3
         public override string Name => "GoodShredder";
         public override string DisplayName => "Shreeder is fastes as a car";
         public override string Description => "Attacks all types of baloons.";
-        public override int Cost => 1300;
+        public override int Cost => 2300;
         public override int Path => MIDDLE;
         public override int Tier => 3;
         public override string Icon => "GoodShredder_Icon_Bloonshipper";

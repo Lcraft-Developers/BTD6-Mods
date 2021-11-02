@@ -14,6 +14,7 @@ using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api.Display;
 using Assets.Scripts.Unity.Display;
+using MelonLoader;
 
 namespace MoreTowersMod
 {
@@ -37,57 +38,48 @@ namespace MoreTowersMod
             return "Icon_Bloonshipper";
         }
         public override bool Use2DModel => true;
+
         public override void ModifyBaseTowerModel(TowerModel towerModel)
         {
-            // Removes Hero Model
-            towerModel.RemoveBehavior<HeroModel>();
-            towerModel.RemoveBehavior<AttackModel>();
-            towerModel.RemoveBehavior<AbilityModel>();
-            towerModel.RemoveBehavior<AbilityModel>();
-
-            // Removes Hero Sounds
+            MelonLogger.Log("Bloonshipper: Remove Hero");
+            // Removes Hero
+            towerModel.GetAttackModel().weapons[0].projectile.RemoveBehavior<CreateSoundOnDelayedCollisionModel>();
             towerModel.RemoveBehavior<CreateSoundOnBloonEnterTrackModel>();
             towerModel.RemoveBehavior<CreateSoundOnBloonLeakModel>();
             towerModel.RemoveBehavior<CreateSoundOnSelectedModel>();
-            towerModel.GetAttackModel().weapons[0].projectile.RemoveBehavior<CreateSoundOnDelayedCollisionModel>();
+            towerModel.RemoveBehavior<AbilityModel>();
+            towerModel.RemoveBehavior<AbilityModel>();
+            towerModel.RemoveBehavior<HeroModel>();
 
+            MelonLogger.Log("Bloonshipper: Add Blop Sound");
             // Add Baloons Blop Sound
             towerModel.AddBehavior(Game.instance.model.GetTowerFromId("DartMonkey").GetBehavior<CreateSoundOnUpgradeModel>().Duplicate());
             towerModel.AddBehavior(Game.instance.model.GetTowerFromId("DartMonkey").GetBehavior<CreateEffectOnUpgradeModel>().Duplicate());
 
-            var squeeze = towerModel.GetAbility(1).GetBehavior<ActivateAttackModel>().attacks[0].Duplicate();
-
+            MelonLogger.Log("Bloonshipper: Manage Combat");
             // Combat
-            squeeze.weapons[0].Rate = 3;
-            squeeze.weapons[0].projectile.pierce = 1;
-            squeeze.weapons[0].projectile.maxPierce = 3;
+            AttackModel attackModel = towerModel.GetAttackModel();
+            attackModel.weapons[0].Rate = 3;
+            attackModel.weapons[0].projectile.pierce = 1;
+            attackModel.weapons[0].projectile.maxPierce = 3;
+            attackModel.weapons[0].projectile.SetHitCamo(false);
 
-            squeeze.weapons[0].projectile.filters = new Il2CppReferenceArray<FilterModel>(new FilterModel[] {
-                new FilterOutTagModel("FilterOutTagModel_ProjectileSqueeze","Moabs",new Il2CppStringArray(0)),
-                new FilterInvisibleModel("FilterInvisibleModel_",true,false)
-            });
-            squeeze.weapons[0].projectile.GetBehavior<ProjectileFilterModel>().filters = new Il2CppReferenceArray<FilterModel>(new FilterModel[] {
-                new FilterOutTagModel("FilterOutTagModel_ProjectileSqueeze","Moabs",new Il2CppStringArray(0)),
-                new FilterInvisibleModel("FilterInvisibleModel_",true,false)
-            });
-            squeeze.GetBehavior<AttackFilterModel>().filters = new Il2CppReferenceArray<FilterModel>(new FilterModel[] {
-                new FilterOutTagModel("FilterOutTagModel_ProjectileSqueeze","Moabs",new Il2CppStringArray(0)),
-                new FilterInvisibleModel("FilterInvisibleModel_",true,false),
-            });
+            /*MelonLogger.Log("Bloonshipper: Edit Baloons Animations");
+            // Edit Baloons Animation
+            attackModel.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().nonMoabsAnimId = 4;
+            attackModel.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().moabAnimId = 4;
+            attackModel.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().bfbAnimId = 4;
+            attackModel.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().zomgAnimId = 4;
+            attackModel.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().ddtAnimId = 4;*/
 
-            // Remove Baloons Animation
-            squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().nonMoabsAnimId = 4;
-            squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().moabAnimId = 4;
-            squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().bfbAnimId = 4;
-            squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().zomgAnimId = 4;
-            squeeze.weapons[0].GetBehavior<SwitchAnimStateForBloonTypeModel>().ddtAnimId = 4;
-
+            MelonLogger.Log("Bloonshipper: Make Target System");
             // Target System
-            squeeze.GetBehavior<TargetStrongModel>().isSelectable = true;
-            squeeze.AddBehavior<TargetFirstModel>(new TargetFirstModel("TargetFirstModel", true, false));
+            attackModel.GetBehavior<TargetStrongModel>().isSelectable = true;
+            attackModel.AddBehavior<TargetFirstModel>(new TargetFirstModel("TargetFirstModel", true, false));
 
+            MelonLogger.Log("Bloonshipper: Register Model");
             // Register Model
-            towerModel.AddBehavior<AttackModel>(squeeze);
+            towerModel.AddBehavior(attackModel);
             towerModel.ApplyDisplay<BloonShipperTowerDisplay>();
         }
         public override string Icon => "Icon_Bloonshipper";

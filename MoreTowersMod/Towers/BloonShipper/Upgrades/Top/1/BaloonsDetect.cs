@@ -22,6 +22,7 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._1
             attackModel.range += 5;
             towerModel.range += 5;
             attackModel.weapons[0].projectile.radius += 3;
+            attackModel.weapons[0].projectile.SetHitCamo(true);
         }
     }
 }

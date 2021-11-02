@@ -25,11 +25,9 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._2
         public override void ApplyUpgrade(TowerModel towerModel)
         {
             AttackModel attackModel = towerModel.GetBehavior<AttackModel>();
-            attackModel.weapons[0].projectile.GetBehavior<DelayBloonChildrenSpawningModel>().Lifespan *= 0.5f;
-            attackModel.AddWeapon(attackModel.weapons[0].Duplicate<WeaponModel>());
-            attackModel.weapons[1].projectile.pierce = 7;
-            attackModel.weapons[1].projectile.maxPierce = 13;
-            attackModel.weapons[1].projectile.CapPierce(99);
+            attackModel.weapons[0].projectile.pierce = 7;
+            attackModel.weapons[0].projectile.maxPierce = 13;
+            attackModel.weapons[0].projectile.CapPierce(99);
             attackModel.range += 2;
             towerModel.range += 2;
             attackModel.weapons[0].projectile.radius += 2;
@@ -43,7 +41,6 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._2
             towerModel.AddBehavior(abilityModel);*/
 
             // TODO: MOAB Detection
-            attackModel.weapons[0].projectile.GetBehavior<DelayBloonChildrenSpawningModel>().Lifespan *= 3f;
         }
     }
 }

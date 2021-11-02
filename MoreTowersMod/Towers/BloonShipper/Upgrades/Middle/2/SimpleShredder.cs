@@ -12,7 +12,7 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Middle._2
         public override string Name => "SimpleShredder";
         public override string DisplayName => "Its shreds like a Shredder";
         public override string Description => "Attacks three times faster.";
-        public override int Cost => 950;
+        public override int Cost => 1250;
         public override int Path => MIDDLE;
         public override int Tier => 2;
         public override string Icon => "SimpleShredder_Icon_Bloonshipper";

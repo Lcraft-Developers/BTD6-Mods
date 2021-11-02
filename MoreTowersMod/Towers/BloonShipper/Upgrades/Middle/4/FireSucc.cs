@@ -12,7 +12,7 @@ namespace MoreTowersMod.Upgrades.BloonShipper.Top._4
         public override string Name => "FireKiller";
         public override string DisplayName => "Fire Killer";
         public override string Description => "Can now destroy all types of Baloons and fire them inside of the machine.";
-        public override int Cost => 17000;
+        public override int Cost => 19200;
         public override int Path => MIDDLE;
         public override int Tier => 4;
         public override string Icon => "FireSucc_Icon_Bloonshipper";
